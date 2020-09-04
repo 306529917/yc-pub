@@ -6,18 +6,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yc.demo.crbook.bean.CrBook;
-import com.yc.demo.crbook.dao.CrBookDao;
+import com.yc.demo.crbook.bean.CrCategroy;
+import com.yc.demo.crbook.dao.CrCategoryDao;
 
 @RestController
-@RequestMapping("book")
-public class BookAction extends BaseAction<CrBook,Integer>{
+@RequestMapping("category")
+public class CategroyAction extends BaseAction<CrCategroy,Integer>{
 	
 	@Resource
-	private CrBookDao dao;
+	private CrCategoryDao dao;
 	
 	@Override
-	protected JpaRepository<CrBook, Integer> dao() {
+	protected JpaRepository<CrCategroy, Integer> dao() {
 		return dao;
 	}
 

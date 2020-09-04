@@ -1,4 +1,8 @@
+server:
+   port: 0
 spring:
+   application:
+      name: crindex
    datasource:
       url: jdbc:sqlite:/d:/sqlite/crbook.db
       driver-class-name: org.sqlite.JDBC

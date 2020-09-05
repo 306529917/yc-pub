@@ -7,4 +7,7 @@ spring:
       
 eureka:
    client:
-      register-with-eureka: false
+      # 注册自己：false 表示不会出现在 application（服务网元） 列表中 
+      registerWithEureka: false
+      # 交换注册信息： false 表示不交换注册信息（集群设true）
+      fetchRegistry: false

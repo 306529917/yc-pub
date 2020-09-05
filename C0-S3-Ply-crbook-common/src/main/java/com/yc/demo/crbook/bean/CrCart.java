@@ -2,12 +2,16 @@ package com.yc.demo.crbook.bean;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 @Entity
-public class CrCart implements java.io.Serializable{
+public class CrCart implements java.io.Serializable {
 	/**
 	 * 
 	 */
@@ -15,53 +19,79 @@ public class CrCart implements java.io.Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+	private Integer id;
+	
+	@Column(insertable = false, updatable = false)
+	private Integer uid;
 
-    private Integer uid;
+	@Column(insertable = false, updatable = false)
+	private Integer bid;
 
-    private Integer bid;
+	private Integer cnt;
 
-    private Integer cnt;
+	private Timestamp createTime;
 
-    private Timestamp createTime;
+	@OneToOne
+	@JoinColumn(name = "uid")
+	private CrUser user;
 
-    public Integer getId() {
-        return id;
-    }
+	@OneToOne
+	@JoinColumn(name = "bid")
+	private CrBook book;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public CrUser getUser() {
+		return user;
+	}
 
-    public Integer getUid() {
-        return uid;
-    }
+	public void setUser(CrUser user) {
+		this.user = user;
+	}
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
+	public CrBook getBook() {
+		return book;
+	}
 
-    public Integer getBid() {
-        return bid;
-    }
+	public void setBook(CrBook book) {
+		this.book = book;
+	}
 
-    public void setBid(Integer bid) {
-        this.bid = bid;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public Integer getCnt() {
-        return cnt;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setCnt(Integer cnt) {
-        this.cnt = cnt;
-    }
+	public Integer getUid() {
+		return uid;
+	}
 
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
+	public void setUid(Integer uid) {
+		this.uid = uid;
+	}
 
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
+	public Integer getBid() {
+		return bid;
+	}
+
+	public void setBid(Integer bid) {
+		this.bid = bid;
+	}
+
+	public Integer getCnt() {
+		return cnt;
+	}
+
+	public void setCnt(Integer cnt) {
+		this.cnt = cnt;
+	}
+
+	public Timestamp getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
 }

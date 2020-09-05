@@ -1,9 +1,15 @@
 package com.yc.demo.crbook.bean;
 
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class CrCategroy implements java.io.Serializable{
@@ -18,7 +24,16 @@ public class CrCategroy implements java.io.Serializable{
 
     private String name;
 
+    @Column(insertable=false,updatable=false)
     private Integer pid;
+    
+    @OneToMany
+    @JoinColumn(name="pid")
+    private List<CrCategroy> children;
+    
+    @OneToOne
+    @JoinColumn(name="pid")
+    private CrCategroy parent;
 
     public Integer getId() {
         return id;
@@ -43,4 +58,26 @@ public class CrCategroy implements java.io.Serializable{
     public void setPid(Integer pid) {
         this.pid = pid;
     }
+
+	public List<CrCategroy> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<CrCategroy> children) {
+		this.children = children;
+	}
+
+	public CrCategroy getParent() {
+		return parent;
+	}
+
+	public void setParent(CrCategroy parent) {
+		this.parent = parent;
+	}
+
+	@Override
+	public String toString() {
+		return "CrCategroy [id=" + id + ", name=" + name + ", pid=" + pid + "]";
+	}
+
 }

@@ -11,6 +11,8 @@ spring:
       username: root
       password: a
    jpa:
+      # 视图阶段开启保持会话
+      open-in-view: true
       show-sql: true
       properties:
          hibernate:

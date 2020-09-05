@@ -1,4 +1,4 @@
-package com.yc.demo.crbook;
+package com.yc.demo.crbook.biz;
 
 import javax.annotation.Resource;
 

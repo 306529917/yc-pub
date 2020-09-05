@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.yc.demo.crbook.bean.CrArticle;
 import com.yc.demo.crbook.bean.CrBook;
 import com.yc.demo.crbook.bean.CrCategroy;
+import com.yc.demo.crbook.biz.BookBiz;
 import com.yc.demo.crbook.dao.CrArticleDao;
 import com.yc.demo.crbook.dao.CrBookDao;
 import com.yc.demo.crbook.dao.CrCategoryDao;

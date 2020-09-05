@@ -6,9 +6,11 @@ import javax.annotation.Resource;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yc.demo.crbook.bean.CrArticle;
 import com.yc.demo.crbook.bean.CrBook;
+import com.yc.demo.crbook.bean.CrCategroy;
 import com.yc.demo.crbook.dao.CrArticleDao;
 import com.yc.demo.crbook.dao.CrBookDao;
 import com.yc.demo.crbook.dao.CrCategoryDao;
@@ -44,6 +46,23 @@ class ApplicationTests {
 		CrBook book = bdao.findById(791).get();
 		System.out.println(book.getPressDate());
 		System.out.println(adao.findById(71483).get().getCreateTime());
+	}
+	
+	@Test
+	@Transactional
+	void test2() {
+		CrCategroy g = gdao.findById(31).get();
+		System.out.println(g.getChildren());
+		System.out.println("==========================");
+		/*
+		 * while(g!=null) { System.out.println(g); g = g.getParent(); }
+		 */
+	}
+	
+	@Test
+	@Transactional
+	void test3() {
+		System.out.println(gdao.findAll().size());
 	}
 
 }

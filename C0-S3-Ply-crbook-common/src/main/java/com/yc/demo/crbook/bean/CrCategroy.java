@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class CrCategroy implements java.io.Serializable{
@@ -31,10 +30,6 @@ public class CrCategroy implements java.io.Serializable{
     @JoinColumn(name="pid")
     private List<CrCategroy> children;
     
-    @OneToOne
-    @JoinColumn(name="pid")
-    private CrCategroy parent;
-
     public Integer getId() {
         return id;
     }
@@ -65,14 +60,6 @@ public class CrCategroy implements java.io.Serializable{
 
 	public void setChildren(List<CrCategroy> children) {
 		this.children = children;
-	}
-
-	public CrCategroy getParent() {
-		return parent;
-	}
-
-	public void setParent(CrCategroy parent) {
-		this.parent = parent;
 	}
 
 	@Override

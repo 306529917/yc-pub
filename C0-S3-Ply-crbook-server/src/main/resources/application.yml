@@ -4,3 +4,7 @@ server:
 spring:
    application:
       name: crserver
+      
+eureka:
+   client:
+      register-with-eureka: false

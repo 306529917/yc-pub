@@ -4,3 +4,9 @@ server:
 spring:
    application:
       name: crzuul
+
+zuul:
+   routes:
+      crbook: book/**
+      cruser: user/**
+      crindex: /**

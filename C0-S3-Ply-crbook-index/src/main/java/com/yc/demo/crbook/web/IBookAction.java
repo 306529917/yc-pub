@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yc.demo.crbook.bean.CrBook;
 
-@FeignClient("book")
+@FeignClient("crbook")
+@RequestMapping("book")
 public interface IBookAction {
 
 	@GetMapping("getNewBooks")

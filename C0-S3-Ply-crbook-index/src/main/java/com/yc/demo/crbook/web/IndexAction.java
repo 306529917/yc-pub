@@ -15,6 +15,7 @@ public class IndexAction {
 	@GetMapping("/")
 	public String index(Model m) {
 		m.addAttribute("newBooks", bact.getNewBooks());
+		m.addAttribute("rootCgys", bact.getRootCgys());
 		return "index";
 	}
 

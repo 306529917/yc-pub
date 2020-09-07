@@ -63,7 +63,9 @@ class ApplicationTests {
 	@Test
 	@Transactional
 	void test3() {
-		System.out.println(gdao.findAll().size());
+		for(CrCategroy cc : gdao.findByPidIsNull()) {
+			System.out.println(cc.getName() + "  " + cc.getChildren());
+		}
 	}
 
 }

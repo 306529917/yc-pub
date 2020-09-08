@@ -110,7 +110,7 @@
 
 
 
-	<!--首页头部: 从index.html中抽取-->
+	<!--首页头部: 从index中抽取-->
 	<div id="mininav" th:replace="index::#mininav"></div>
 	<div id="header-wrapper1" th:replace="index::#header-wrapper1"></div>
 
@@ -125,7 +125,7 @@
 		<a id="main-content"></a>
 		<h2 class="element-invisible">主标签</h2>
 		<ul class="tabs primary">
-			<li><a href="/register.html">创建新帐号</a></li>
+			<li><a href="/register">创建新帐号</a></li>
 			<li class="active"><a href="/user" class="active">登录<span
 					class="element-invisible">（活动标签）</span></a></li>
 			<li><a href="/user/password">重设密码</a></li>
@@ -194,7 +194,7 @@
 	</div>
 	<div class="clear"></div>
 	
-	<!--首页尾部 从 index.html 中抽取-->
+	<!--首页尾部 从 index 中抽取-->
 	<div id="footer" th:replace="index::#footer"></div>
 	
 	<a class="go_top" href="javascript:void(0);"></a>

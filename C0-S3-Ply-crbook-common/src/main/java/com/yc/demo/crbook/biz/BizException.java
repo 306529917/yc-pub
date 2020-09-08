@@ -6,6 +6,7 @@ public class BizException extends Exception {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private String code;
 
 	public BizException() {
 		super();
@@ -25,6 +26,20 @@ public class BizException extends Exception {
 
 	public BizException(Throwable cause) {
 		super(cause);
+	}
+
+	public BizException(String code, String message) {
+		super(message);
+		this.code = code;
+	}
+
+	public BizException(String code, String msg, Exception e) {
+		super(msg,e);
+		this.code = code;
+	}
+
+	public String getCode() {
+		return code;
 	}
 
 }

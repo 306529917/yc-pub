@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
@@ -23,8 +24,6 @@ public class CrUser implements java.io.Serializable{
     @Length(message = "账号长度必须是4~20个字符",min = 4 , max=20)
     private String account;
 
-	@NotEmpty(message = "请填写中文名！")
-    @Length(message = "中文名长度必须是4~10个字符",min = 2 , max=10)
     private String name;
 
 	@NotEmpty(message = "请填写密碼！")
@@ -39,7 +38,9 @@ public class CrUser implements java.io.Serializable{
 
     private String phone;
 
-    private String email;
+	@NotEmpty(message = "请填写邮箱地址！")
+	@Email(message = "邮箱地址格式错误！")
+	private String email;
 
     private String school;
 

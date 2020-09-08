@@ -10,6 +10,9 @@ public class Result implements java.io.Serializable {
 	private String msg;
 	private Object data;
 
+	public Result() {
+	}
+
 	public static Result success(String msg) {
 		return new Result(1, msg, null);
 	}

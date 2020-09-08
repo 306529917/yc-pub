@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.yc.demo.crbook.bean.CrUser;
+import com.yc.demo.crbook.bean.Result;
 
 @Controller
 @SessionAttributes("loginedUser")
@@ -34,7 +35,7 @@ public class IndexAction {
 
 	@PostMapping("login.do")
 	public String doLogin(@Valid CrUser user, Errors es, Model m) {
-		if (es.hasFieldErrors("account") == false && es.hasFieldErrors("pwd") == false) {
+		if (es == null || es.hasFieldErrors("account") == false && es.hasFieldErrors("pwd") == false) {
 			List<CrUser> list = uact.find(user);
 			if (list.size() > 0) {
 				m.addAttribute("loginedUser", list.get(0));
@@ -46,6 +47,19 @@ public class IndexAction {
 		m.addAttribute("inUser", user);
 		m.addAttribute("errors", es.getAllErrors());
 		return "login";
+	}
+
+	@PostMapping("register.do")
+	public String doRegister(CrUser user, String repwd, Model m) {
+		Result res = uact.register(repwd, user);
+		if (res.getCode() == 1) {
+			return doLogin(user, null, m);
+		} else {
+			System.out.println(res.getData());
+			m.addAttribute("inUser", user);
+			m.addAttribute("errors", res.getData());
+			return "register";
+		}
 	}
 
 	@GetMapping(path = { "logout.do" })

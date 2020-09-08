@@ -39,6 +39,7 @@ public class IndexAction {
 			List<CrUser> list = uact.find(user);
 			if (list.size() > 0) {
 				m.addAttribute("loginedUser", list.get(0));
+				index(m);
 				return "index";
 			} else {
 				es.reject("UserOrPwdError", "用户名或密码错误！");

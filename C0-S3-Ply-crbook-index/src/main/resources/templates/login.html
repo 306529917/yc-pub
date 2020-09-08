@@ -140,14 +140,18 @@
 						<div>
 							<div class="form-item form-type-textfield form-item-name">
 								<label for="edit-name">用户名 <span class="form-required"
-									title="此项必填。">*</span></label> <input type="text" id="edit-name"
-									name="name" value="" size="60" maxlength="60"
+									title="此项必填。">*</span></label>
+									<span th:each="e:${errors}" th:if="${e.field}=='account'" th:text="${e.defaultMessage}" style="color:red"></span>
+									<input type="text" id="edit-name" th:value="${inUser?.account}"
+									name="account" size="60" maxlength="60"
 									class="form-text required" />
 								<div class="description">输入您在 灿然书屋 的用户名。</div>
 							</div>
 							<div class="form-item form-type-password form-item-pass">
 								<label for="edit-pass">密码 <span class="form-required"
-									title="此项必填。">*</span></label> <input type="password" id="edit-pass"
+									title="此项必填。">*</span></label> 
+									<span th:each="e:${errors}" th:if="${e.field}=='pwd'" th:text="${e.defaultMessage}" style="color:red"></span>
+									<input type="password" id="edit-pass" th:value="${inUser?.pwd}"
 									name="pwd" size="60" maxlength="128"
 									class="form-text required" />
 								<div class="description">输入与您用户名相匹配的密码。</div>

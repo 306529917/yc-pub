@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,7 +21,7 @@ public abstract class BaseAction<E, I> {
 	protected abstract JpaRepository<E, I> dao();
 
 	@RequestMapping("find")
-	public List<E> find(E e) {
+	public List<E> find(@RequestBody E e) {
 		return dao().findAll(Example.of(e));
 	}
 
@@ -30,13 +31,13 @@ public abstract class BaseAction<E, I> {
 	}
 
 	@RequestMapping("page")
-	public Page<E> page(E e, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int rows) {
+	public Page<E> page(@RequestBody E e, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int rows) {
 		Pageable p = PageRequest.of(page, rows);
 		return dao().findAll(Example.of(e), p);
 	}
 
 	@RequestMapping("save")
-	public Result save(@Valid E e, Errors errors) {
+	public Result save(@RequestBody @Valid E e, Errors errors) {
 		if (errors.hasErrors()) {
 			return Result.failure("保存失败！", errors.getAllErrors());
 		} else {

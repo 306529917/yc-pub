@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class CrUser implements java.io.Serializable{
@@ -16,10 +19,16 @@ public class CrUser implements java.io.Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+	@NotEmpty(message = "请填写账号！")
+    @Length(message = "账号长度必须是4~20个字符",min = 4 , max=20)
     private String account;
 
+	@NotEmpty(message = "请填写中文名！")
+    @Length(message = "中文名长度必须是4~10个字符",min = 2 , max=10)
     private String name;
 
+	@NotEmpty(message = "请填写密碼！")
+    @Length(message = "密碼长度必须是3~20个字符",min = 3 , max=20)
     private String pwd;
 
     private String gender;
@@ -143,4 +152,13 @@ public class CrUser implements java.io.Serializable{
     public void setJob(String job) {
         this.job = job == null ? null : job.trim();
     }
+
+	@Override
+	public String toString() {
+		return "CrUser [id=" + id + ", account=" + account + ", name=" + name + ", pwd=" + pwd + ", gender=" + gender
+				+ ", birthday=" + birthday + ", address=" + address + ", phone=" + phone + ", email=" + email
+				+ ", school=" + school + ", education=" + education + ", profession=" + profession + ", job=" + job
+				+ "]";
+	}
+    
 }

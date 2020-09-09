@@ -6,6 +6,8 @@ spring:
       name: crzuul
 
 zuul:
+   # 全局忽略敏感头
+   sensitive-headers: 
    routes:
       crbook: book/**
       cruser: user/**

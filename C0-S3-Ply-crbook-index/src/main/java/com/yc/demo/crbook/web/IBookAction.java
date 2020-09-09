@@ -15,7 +15,7 @@ public interface IBookAction {
 
 	@GetMapping("book/getNewBooks")
 	List<CrBook> getNewBooks();
-	
+
 	@GetMapping("category/getRootCgys")
 	List<CrCategroy> getRootCgys();
 
@@ -24,5 +24,5 @@ public interface IBookAction {
 
 	@GetMapping("book/get")
 	CrBook get(@RequestParam("id") int id);
-	
+
 }

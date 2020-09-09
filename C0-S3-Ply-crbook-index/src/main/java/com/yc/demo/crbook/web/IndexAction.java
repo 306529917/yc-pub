@@ -3,7 +3,6 @@ package com.yc.demo.crbook.web;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -11,8 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
+import com.yc.demo.crbook.bean.CrCart;
 import com.yc.demo.crbook.bean.CrShowBook;
 import com.yc.demo.crbook.bean.CrUser;
 import com.yc.demo.crbook.bean.Result;
@@ -76,13 +79,32 @@ public class IndexAction {
 	}
 
 	@GetMapping(path = { "logout.do" })
-	public String loginout(Model m, HttpSession session) {
-		session.removeAttribute("loginedUser");
+	public String loginout(Model m, SessionStatus ss) {
+		ss.setComplete();
 		return index(m);
 	}
 
-	@GetMapping(path = { "login", "register", "user_edit", "user_home", "user_order", "user_profile", "cart" })
-	public void tohtml(Model m) {
+	@GetMapping(path = { "login", "register", "user_edit", "user_home", "user_order", "user_profile" })
+	public void tohtml() {
+	}
+
+	@RequestMapping("cart")
+	public void cart(@SessionAttribute("loginedUser") CrUser user, Model m) {
+		CrCart cart = new CrCart();
+		cart.setUid(user.getId());
+		m.addAttribute("carts", uact.queryCart(cart));
+	}
+
+	@RequestMapping("addCart.do")
+	public String addCart(CrCart cart, @SessionAttribute("loginedUser") CrUser user, Model m) {
+		cart.setUser(user);
+		System.out.println(cart);
+		Result res = uact.addCart(cart);
+		if (res.getCode() == 0) {
+			m.addAttribute("msg", res.getMsg());
+		}
+		cart(user, m);
+		return "cart";
 	}
 
 }

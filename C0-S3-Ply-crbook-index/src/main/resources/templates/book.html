@@ -218,7 +218,8 @@
 		<h2 class="element-invisible">你在这里</h2>
 		<div class="breadcrumb">
 			<a href="/">首页</a> » <a href="/books">图书</a> » <a
-				href="/books/category/22">学术著作</a> » <a href="/books/category/35">哲学</a>
+			   href="/books/category/22" th:text="${book.categroy1}">学术著作</a> » 
+			<a href="/books/category/35"  th:text="${book.categroy2}">哲学</a>
 			»
 		</div>
 	</div>
@@ -639,7 +640,7 @@
 									<div class="panel-pane pane-node">
 
 										<div class='panetitle'>
-											<h2 class="pane-title">论语译注（简体字本）--徐德琳老师推荐北京今年高考必考好书之一</h2>
+											<h2 class="pane-title" th:text="${book.name}">论语译注（简体字本）--徐德琳老师推荐北京今年高考必考好书之一</h2>
 										</div>
 
 
@@ -681,7 +682,7 @@
 														</div>
 
 														<div class="buyit">
-															<a href="/cart/add/p45473?destination=cart"> <img
+															<a th:href="'addCart.do?book.id=' + ${book.id}"> <img
 																alt="购买" src="sites/all/themes/dushu/images/buyit.png">
 															</a>
 														</div>
@@ -1007,7 +1008,7 @@
 																<div class="nav-minicart-inner">
 																	<div clstag="shangpin|keycount|bookitem|1303"
 																		class="nav-minicart-btn ">
-																		<a href="/cart/add/p45473?destination=cart"
+																		<a th:href="'addCart.do?book.id=' + ${book.id}"
 																			target="_blank">加入购物车</a>
 																	</div>
 																	<div class="nav-minicart-con hide">

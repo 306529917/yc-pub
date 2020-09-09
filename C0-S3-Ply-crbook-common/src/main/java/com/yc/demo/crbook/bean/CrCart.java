@@ -94,4 +94,11 @@ public class CrCart implements java.io.Serializable {
 	public void setCreateTime(Timestamp createTime) {
 		this.createTime = createTime;
 	}
+
+	@Override
+	public String toString() {
+		return "CrCart [id=" + id + ", uid=" + uid + ", bid=" + bid + ", cnt=" + cnt + ", createTime=" + createTime
+				+ ", user=" + user + ", book=" + book + "]";
+	}
+	
 }

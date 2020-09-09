@@ -4,13 +4,13 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.stereotype.Component;
+//import org.springframework.stereotype.Component;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 
-@Component
+//@Component
 public class LoginFilter extends ZuulFilter {
 
 	@Override
@@ -18,7 +18,7 @@ public class LoginFilter extends ZuulFilter {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		HttpServletRequest request = ctx.getRequest();
 		String path = request.getServletPath();
-		return path.startsWith("/user_") || path.equals("/cart");
+		return path.startsWith("/user_") || path.equals("/cart") || path.equals("/addCart.do");
 	}
 
 	@Override

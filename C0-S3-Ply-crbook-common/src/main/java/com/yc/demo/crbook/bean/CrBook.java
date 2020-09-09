@@ -244,4 +244,14 @@ public class CrBook implements java.io.Serializable{
     public void setExtract(String extract) {
         this.extract = extract == null ? null : extract.trim();
     }
+
+	@Override
+	public String toString() {
+		return "CrBook [id=" + id + ", name=" + name + ", categroy1=" + categroy1 + ", categroy2=" + categroy2
+				+ ", pic=" + pic + ", price=" + price + ", author=" + author + ", publisher=" + publisher
+				+ ", pressDate=" + pressDate + ", isbn=" + isbn + ", pressSn=" + pressSn + ", pages=" + pages
+				+ ", words=" + words + ", printTime=" + printTime + ", bookSize=" + bookSize + ", printSn=" + printSn
+				+ ", packing=" + packing + ", format=" + format + ", abst=" + abst + ", contentIntro=" + contentIntro
+				+ ", authorIntro=" + authorIntro + ", catalog=" + catalog + ", extract=" + extract + "]";
+	}
 }

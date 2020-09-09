@@ -1,20 +1,25 @@
 package com.yc.demo.crbook;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Example;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.yc.demo.crbook.bean.CrArticle;
 import com.yc.demo.crbook.bean.CrBook;
 import com.yc.demo.crbook.bean.CrCategroy;
+import com.yc.demo.crbook.bean.CrShowBook;
 import com.yc.demo.crbook.biz.BookBiz;
 import com.yc.demo.crbook.dao.CrArticleDao;
 import com.yc.demo.crbook.dao.CrBookDao;
 import com.yc.demo.crbook.dao.CrCategoryDao;
+import com.yc.demo.crbook.dao.CrShowArticleDao;
+import com.yc.demo.crbook.dao.CrShowBookDao;
 
 @SpringBootTest
 class ApplicationTests {
@@ -27,7 +32,13 @@ class ApplicationTests {
 
 	@Resource
 	private CrBookDao bdao;
-	
+
+	@Resource
+	private CrShowBookDao sbdao;
+
+	@Resource
+	private CrShowArticleDao sadao;
+
 	@Resource
 	BookBiz bbiz;
 
@@ -48,7 +59,7 @@ class ApplicationTests {
 		System.out.println(book.getPressDate());
 		System.out.println(adao.findById(71483).get().getCreateTime());
 	}
-	
+
 	@Test
 	@Transactional
 	void test2() {
@@ -59,13 +70,23 @@ class ApplicationTests {
 		 * while(g!=null) { System.out.println(g); g = g.getParent(); }
 		 */
 	}
-	
+
 	@Test
 	@Transactional
 	void test3() {
-		for(CrCategroy cc : gdao.findByPidIsNull()) {
+		for (CrCategroy cc : gdao.findByPidIsNull()) {
 			System.out.println(cc.getName() + "  " + cc.getChildren());
 		}
+	}
+
+	@Test
+	@Transactional
+	void test4() {
+		List<CrShowBook> list = sbdao.findAll(Example.of(new CrShowBook()));
+
+		System.out.println(list);
+
+		System.out.println(list.get(0).getBook());
 	}
 
 }

@@ -65,4 +65,11 @@ public class CrArticle implements java.io.Serializable{
 	public void setContent(String content) {
 		this.content = content == null ? null : content.trim();
 	}
+
+	@Override
+	public String toString() {
+		return "CrArticle [id=" + id + ", title=" + title + ", author=" + author + ", createTime=" + createTime
+				+ ", content=" + content + "]";
+	}
+	
 }

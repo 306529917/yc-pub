@@ -21,6 +21,16 @@ public class CrShow implements java.io.Serializable {
 	private String relatb;
 
 	private Integer relaid;
+	
+	private Integer sort;
+	
+	public Integer getSort() {
+		return sort;
+	}
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
 
 	public Integer getId() {
 		return id;

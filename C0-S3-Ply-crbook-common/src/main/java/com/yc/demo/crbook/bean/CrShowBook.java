@@ -30,6 +30,16 @@ public class CrShowBook extends CrShow {
 
 	@Column(insertable = false, updatable = false)
 	private Integer relaid;
+	
+	private Integer sort;
+	
+	public Integer getSort() {
+		return sort;
+	}
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
 
 	public Integer getId() {
 		return id;

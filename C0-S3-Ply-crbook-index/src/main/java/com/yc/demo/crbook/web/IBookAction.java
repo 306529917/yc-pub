@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.yc.demo.crbook.bean.CrBook;
 import com.yc.demo.crbook.bean.CrCategroy;
+import com.yc.demo.crbook.bean.CrShowBook;
 
 @FeignClient("crbook")
 public interface IBookAction {
@@ -16,5 +17,8 @@ public interface IBookAction {
 	
 	@GetMapping("category/getRootCgys")
 	List<CrCategroy> getRootCgys();
+
+	@GetMapping("book/getIndexBooks")
+	List<CrShowBook> getIndexBooks();
 	
 }

@@ -1,5 +1,6 @@
 package com.yc.demo.crbook.bean;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +22,15 @@ public class CrShowArticle extends CrShow {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	private String page;
+
+	private String board;
+
+	private String relatb = "cr_article";
+
+	@Column(insertable = false, updatable = false)
+	private Integer relaid;
+
 	public Integer getId() {
 		return id;
 	}
@@ -29,7 +39,21 @@ public class CrShowArticle extends CrShow {
 		this.id = id;
 	}
 
-	private String relatb = "cr_article";
+	public String getPage() {
+		return page;
+	}
+
+	public void setPage(String page) {
+		this.page = page;
+	}
+
+	public String getBoard() {
+		return board;
+	}
+
+	public void setBoard(String board) {
+		this.board = board;
+	}
 
 	public String getRelatb() {
 		return relatb;
@@ -39,8 +63,22 @@ public class CrShowArticle extends CrShow {
 		this.relatb = relatb;
 	}
 
+	public Integer getRelaid() {
+		return relaid;
+	}
+
+	public void setRelaid(Integer relaid) {
+		this.relaid = relaid;
+	}
+
+	@Override
+	public String toString() {
+		return "CrShow [id=" + id + ", page=" + page + ", board=" + board + ", relatb=" + relatb + ", relaid=" + relaid
+				+ "]";
+	}
+
 	@OneToOne
-	@JoinColumn(name="relaid")
+	@JoinColumn(name = "relaid")
 	private CrArticle article;
 
 	public CrArticle getArticle() {

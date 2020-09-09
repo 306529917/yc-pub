@@ -62,4 +62,10 @@ public class CrShow implements java.io.Serializable {
 		this.relaid = relaid;
 	}
 
+	@Override
+	public String toString() {
+		return "CrShow [id=" + id + ", page=" + page + ", board=" + board + ", relatb=" + relatb + ", relaid=" + relaid
+				+ "]";
+	}
+
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.yc.demo.crbook.bean.CrShowBook;
 import com.yc.demo.crbook.bean.CrUser;
 import com.yc.demo.crbook.bean.Result;
 
@@ -30,6 +31,10 @@ public class IndexAction {
 	public String index(Model m) {
 		m.addAttribute("newBooks", bact.getNewBooks());
 		m.addAttribute("rootCgys", bact.getRootCgys());
+		List<CrShowBook> list = bact.getIndexBooks();
+		m.addAttribute("recomm1", list.stream().filter(p -> {
+			return "recomm1".equals(p.getBoard());
+		}).toArray());
 		return "index";
 	}
 

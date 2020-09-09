@@ -68,6 +68,13 @@ public class IndexAction {
 		}
 	}
 
+	@GetMapping("bookinfo")
+	public String book(int id, Model m) {
+		m.addAttribute("rootCgys", bact.getRootCgys());
+		m.addAttribute("book", bact.get(id));
+		return "book";
+	}
+
 	@GetMapping(path = { "logout.do" })
 	public String loginout(Model m, HttpSession session) {
 		session.removeAttribute("loginedUser");

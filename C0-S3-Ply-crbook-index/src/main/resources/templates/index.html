@@ -1575,7 +1575,7 @@
 
 																<div class="views-field views-field-uc-product-image">
 																	<div class="field-content">
-																		<a href="book.html"
+																		<a  th:href="'bookinfo?id=' + ${sb.book.id}"
 																			th:title="${sb.book.name}"
 																			target="_blank"><img
 																			th:data-src="${sb.book.pic}"
@@ -1793,7 +1793,7 @@
 																	th:if="${s.index} >= ${rs.index * 6} and ${s.index} < ${(rs.index + 1) * 6}">
 																	<div class="views-field views-field-uc-product-image">
 																		<div class="field-content">
-																			<a href="book.html"
+																			<a  th:href="'bookinfo?id=' + ${b.id}"
 																				th:title="${b.name} + ' ' + ${b.publisher}"><img
 																				th:src="${b.pic.replaceAll('200_200','130_130')}"
 																				th:alt="${b.name} + ' ' + ${b.publisher}"></a>

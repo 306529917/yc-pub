@@ -47,7 +47,7 @@ public class IndexAction {
 				index(m);
 				return "index";
 			} else {
-				es.reject("UserOrPwdError", "用户名或密码错误！");
+				es.rejectValue("account", "UserOrPwdError", "用户名或密码错误！");
 			}
 		}
 		m.addAttribute("inUser", user);

@@ -98,7 +98,6 @@ public class IndexAction {
 	@RequestMapping("addCart.do")
 	public String addCart(CrCart cart, @SessionAttribute("loginedUser") CrUser user, Model m) {
 		cart.setUser(user);
-		System.out.println(cart);
 		Result res = uact.addCart(cart);
 		if (res.getCode() == 0) {
 			m.addAttribute("msg", res.getMsg());

@@ -25,7 +25,7 @@ public interface IUserAction {
 	public Result addCart(CrCart cart);
 	
 	@GetMapping("cart/find")
-	List<CrCart> queryCart(CrCart cart);
+	List<CrCart> queryCart(@RequestBody CrCart cart);
 
 
 

@@ -2,7 +2,11 @@ package com.yc.demo.crbook.web;
 
 import javax.annotation.Resource;
 
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,11 +26,19 @@ public class CartAction extends BaseAction<CrCart, Integer> {
 		return dao;
 	}
 
-	@RequestMapping("addCart.do")
-	public Result addCart(CrCart cart) {
-		System.out.println(cart);
+	@PostMapping("addCart.do")
+	public Result addCart(@RequestBody CrCart cart) {
+		if (cart.getCnt() == null) {
+			cart.setCnt(1);
+		}
+		CrCart dbcart = null;
 		if (cart.getId() != null) {
-			CrCart dbcart = dao.findById(cart.getId()).get();
+			dbcart = dao.findById(cart.getId()).get();
+		} else {
+			Example<CrCart> exa = Example.of(cart, ExampleMatcher.matching().withIgnorePaths("cnt", "createTime"));
+			dbcart = dao.findOne(exa).orElse(null);
+		}
+		if (dbcart != null) {
 			dbcart.setCnt(dbcart.getCnt() + cart.getCnt());
 			cart = dbcart;
 		}

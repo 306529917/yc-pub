@@ -36,7 +36,7 @@ public class IndexAction {
 		m.addAttribute("rootCgys", bact.getRootCgys());
 		List<CrShowBook> list = bact.getIndexBooks();
 		m.addAttribute("recomm1", list.stream().filter(p -> {
-			return "recomm1".equals(p.getBoard());
+			return "编辑推荐".equals(p.getBoard());
 		}).toArray());
 		return "index";
 	}

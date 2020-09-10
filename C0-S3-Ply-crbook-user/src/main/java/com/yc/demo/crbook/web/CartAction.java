@@ -1,5 +1,7 @@
 package com.yc.demo.crbook.web;
 
+import java.sql.Timestamp;
+
 import javax.annotation.Resource;
 
 import org.springframework.data.domain.Example;
@@ -41,6 +43,8 @@ public class CartAction extends BaseAction<CrCart, Integer> {
 		if (dbcart != null) {
 			dbcart.setCnt(dbcart.getCnt() + cart.getCnt());
 			cart = dbcart;
+		} else {
+			cart.setCreateTime(new Timestamp(System.currentTimeMillis()));
 		}
 		cart = dao.save(cart);
 		return Result.success("添加购物车成功！", cart);

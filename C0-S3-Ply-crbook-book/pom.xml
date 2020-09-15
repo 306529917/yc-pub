@@ -8,15 +8,4 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>C0-S3-Ply-crbook-book</artifactId>
-	<dependencies>
-		<dependency>
-			<groupId>com.yc.demo</groupId>
-			<artifactId>C0-S3-Ply-crbook-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-		</dependency>
-	</dependencies>
 </project>

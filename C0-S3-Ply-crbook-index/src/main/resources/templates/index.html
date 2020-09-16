@@ -1795,8 +1795,9 @@
 																		<div class="field-content">
 																			<a  th:href="'bookinfo?id=' + ${b.id}"
 																				th:title="${b.name} + ' ' + ${b.publisher}"><img
-																				th:src="${b.pic.replaceAll('200_200','130_130')}"
-																				th:alt="${b.name} + ' ' + ${b.publisher}"></a>
+																				th:src="${b.pic}"
+																				th:alt="${b.name} + ' ' + ${b.publisher}"
+																				width="130px" height="130px"></a>
 																		</div>
 																	</div>
 																	<div class="views-field views-field-title">
